@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/kiranpivot/gcp-cd-codelab-1"]
+    env: ["PROJECT_ROOT=github.com/kiranpivot/gcp-cd-codelab-1"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/my-was-proj/gcp-cd-codelab-1:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/my-was-proj/gcp-cd-codelab-1:$REVISION_ID"
